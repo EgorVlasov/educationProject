@@ -6,13 +6,16 @@ int main (){
     std::string stopName4 = "Release_alley";
     int numberOfStopsOnRoute = 4;
     int ticketPrice = 20;
-    int expensesSalary = ticketPrice / 4;
-    int expensesFuel = ticketPrice / 5;
-    int expensesTaxes = ticketPrice / 5;
-    int expensesCarRepair = ticketPrice / 5;
-    int incomeForOneTicket = ticketPrice - (expensesSalary+expensesFuel+expensesTaxes+expensesCarRepair);
-    int incomeForOneStop;
+    int salary = ticketPrice / 4;
+    int fuelCost = ticketPrice / 5;
+    int taxes = ticketPrice / 5;
+    int carRepairCost = ticketPrice / 5;
+    int totalSalary;
+    int totalFuelCoste;
+    int totalTaxes;
+    int totalcarRepairCost;
     int totalIncome;
+    int totalPassangers;
     int passengersCameOut;
     int passengersEntered;
     int currentNumberOfPassengers;
@@ -21,7 +24,7 @@ int main (){
     currentStopName = stopName1;
     currentNumberOfPassengers = 0;
 
-    std::cout << "We arrive at the stop '" << currentStopName <<"'. Passengers In the cabin" << currentNumberOfPassengers << " \n";
+    std::cout << "We arrive at the stop '" << currentStopName <<"'. Passengers In the cabin: " << currentNumberOfPassengers << " \n";
     std::cout << "How many passengers got off at the bus stop? \n";
     std::cin >> passengersCameOut;
     std::cout << "How many passengers have entered at the bus? \n";
@@ -29,10 +32,12 @@ int main (){
     std::cout << "We leave from the stop '" << currentStopName << "' \n";
     currentNumberOfPassengers += (passengersEntered - passengersCameOut);
     std::cout << "Passengers in the bus cabin: " << currentNumberOfPassengers << "\n";
-    incomeForOneStop = incomeForOneTicket*currentNumberOfPassengers;
-    std::cout << "we earned: " << incomeForOneStop << " rubles \n";
-    totalIncome = incomeForOneStop;
-    std::cout << "we earned TOTAL: " << totalIncome << " rubles \n";
+
+    totalSalary = salary*passengersEntered;
+    totalFuelCoste = fuelCost*passengersEntered;
+    totalTaxes = taxes*passengersEntered;
+    totalcarRepairCost = carRepairCost*passengersEntered;
+    totalPassangers = passengersEntered;
 
     std::cout << "-----------in route--------- \n";
 
@@ -45,10 +50,13 @@ int main (){
     std::cout << "We leave from the stop '" << currentStopName << "' \n";
     currentNumberOfPassengers += (passengersEntered - passengersCameOut);
     std::cout << "Passengers in the bus cabin: " << currentNumberOfPassengers << "\n";
-    incomeForOneStop = incomeForOneTicket*currentNumberOfPassengers;
-    std::cout << "we earned: " << incomeForOneStop << " rubles \n";
-    totalIncome +=incomeForOneStop;
-    std::cout << "we earned TOTAL: " << totalIncome << " rubles \n";
+
+    totalSalary += (salary*passengersEntered);
+    totalFuelCoste += (fuelCost*passengersEntered);
+    totalTaxes += (taxes*passengersEntered);
+    totalcarRepairCost += (carRepairCost*passengersEntered);
+    totalPassangers +=passengersEntered;
+
 
     std::cout << "-----------in route--------- \n";
 
@@ -61,10 +69,12 @@ int main (){
     std::cout << "We leave from the stop '" << currentStopName << "' \n";
     currentNumberOfPassengers += (passengersEntered - passengersCameOut);
     std::cout << "Passengers in the bus cabin: " << currentNumberOfPassengers << "\n";
-    incomeForOneStop = incomeForOneTicket*currentNumberOfPassengers;
-    std::cout << "we earned: " << incomeForOneStop << " rubles \n";
-    totalIncome +=incomeForOneStop;
-    std::cout << "we earned TOTAL: " << totalIncome << " rubles \n";
+
+    totalSalary += (salary*passengersEntered);
+    totalFuelCoste += (fuelCost*passengersEntered);
+    totalTaxes += (taxes*passengersEntered);
+    totalcarRepairCost += (carRepairCost*passengersEntered);
+    totalPassangers +=passengersEntered;
     
     std::cout << "-----------in route--------- \n";
 
@@ -77,8 +87,20 @@ int main (){
     std::cout << "We leave from the stop '" << currentStopName << "' \n";
     currentNumberOfPassengers += (passengersEntered - passengersCameOut);
     std::cout << "Passengers in the bus cabin: " << currentNumberOfPassengers << "\n";
-    incomeForOneStop = incomeForOneTicket*currentNumberOfPassengers;
-    std::cout << "we earned: " << incomeForOneStop << " rubles \n";
-    totalIncome +=incomeForOneStop;
-    std::cout << "we earned TOTAL: " << totalIncome << " rubles \n";  
+
+    totalSalary += (salary*passengersEntered);
+    totalFuelCoste += (fuelCost*passengersEntered);
+    totalTaxes += (taxes*passengersEntered);
+    totalcarRepairCost += (carRepairCost*passengersEntered);
+    totalPassangers +=passengersEntered;
+    totalIncome = (totalPassangers*ticketPrice)-(totalSalary+totalFuelCoste+totalTaxes+totalcarRepairCost);
+    
+    std::cout << "\n";
+    std::cout << "Total tickets were sold: " << totalPassangers << "\n";
+    std::cout << "Total amount of tickets sold: " << totalPassangers*ticketPrice << "\n";
+    std::cout << "Total Income: " << totalIncome << "\n";
+    std::cout << "Driver salary: " << totalSalary << "\n";
+    std::cout << "Total fuel coste: " << totalFuelCoste << "\n";
+    std::cout << "Total fuel coste: " << totalTaxes << "\n";
+    std::cout << "Total car repair cost: " << totalcarRepairCost << "\n";
 };
