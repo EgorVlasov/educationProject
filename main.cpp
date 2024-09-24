@@ -4,6 +4,7 @@ int main (){
     std::string stopName2 = "Algorithms_Prospectus";
     std::string stopName3 = "Errors_road";
     std::string stopName4 = "Release_alley";
+    std::string currentStopName;
     int numberOfStopsOnRoute = 4;
     int ticketPrice = 20;
     int salary = ticketPrice / 4;
@@ -19,11 +20,9 @@ int main (){
     int passengersCameOut;
     int passengersEntered;
     int currentNumberOfPassengers;
-    std::string currentStopName;
 
     currentStopName = stopName1;
     currentNumberOfPassengers = 0;
-
     std::cout << "We arrive at the stop '" << currentStopName <<"'. Passengers In the cabin: " << currentNumberOfPassengers << " \n";
     std::cout << "How many passengers got off at the bus stop? \n";
     std::cin >> passengersCameOut;
