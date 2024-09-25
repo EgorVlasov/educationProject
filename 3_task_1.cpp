@@ -56,7 +56,6 @@ int main (){
     totalcarRepairCost += (carRepairCost*passengersEntered);
     totalPassangers +=passengersEntered;
 
-
     std::cout << "-----------in route--------- \n";
 
     currentStopName = stopName3;
