@@ -2,15 +2,15 @@
 int main(){
     int x;
     int y;
-    std::cout << "input X";
+    std::cout << "input X ";
     std::cin >> x;
-    std::cout >> "input Y";
+    std::cout << "input Y ";
     std::cin >> y;
     if (x < y){
-        std::cout << "the smallest number Х" << x;
-    } if else (x > y){
-        std::cout << "the smallest number Y" << y;
+        std::cout << "the smallest number X = " << x;
+    } else if (x > y){
+        std::cout << "the smallest number Y = " << y;
     }else{
-        std::cout << "X = Y" << y << "=" << x;
+        std::cout << "X = Y = " << y << " = " << x;
     }
 }
