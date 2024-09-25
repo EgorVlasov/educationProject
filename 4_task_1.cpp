@@ -6,7 +6,7 @@ int main(){
     std::cin >> x;
     std::cout << "input Y ";
     std::cin >> y;
-    std::cout << "==============checking==============\n"
+    std::cout << "==============checking==============\n";
     if (x < y){
         std::cout << "the smallest number X = " << x;
     } else if (x > y){
