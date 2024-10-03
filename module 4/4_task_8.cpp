@@ -19,16 +19,10 @@ int main (){
         if (salary1 > salary2) {
             hightestSalary = salary1;
             lowestSalary = salary2;
-            if (salary1 < salary3){
-                hightestSalary = salary3;
-            }
-            if (salary2 > salary3){
-                lowestSalary = salary3;
-            }
+            if (salary1 < salary3) hightestSalary = salary3;
+            if (salary2 > salary3) lowestSalary = salary3;
         } else {
-            if (salary2 > salary3){
-                hightestSalary = salary2;
-            }
+            if (salary2 > salary3) hightestSalary = salary2;
         }
         std::cout << "hightest salary: " << hightestSalary << " RUB\n";
         std::cout << "lowest salary: " << lowestSalary << " RUB\n";
