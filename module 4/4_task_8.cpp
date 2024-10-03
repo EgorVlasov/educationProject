@@ -14,26 +14,18 @@ int main (){
     std::cin >> salary3;
     std::cout << "=============processing=============\n";
     if (salary1 > 0 && salary2 > 0 && salary3 > 0){
+        hightestSalary = salary3;
+        lowestSalary = salary1;
         if (salary1 > salary2 && salary1 > salary3) {
             hightestSalary = salary1;
+            lowestSalary = salary2;
             if (salary2 > salary3) {
                 lowestSalary = salary3;
-            } else {
-                lowestSalary = salary2;
             }
         } else if (salary2 > salary1 && salary2 > salary3) {
             hightestSalary = salary2;
             if (salary1 > salary3) {
                 lowestSalary = salary3;
-            } else {
-                lowestSalary = salary1;
-            }
-        } else {
-            hightestSalary = salary3;
-            if (salary1 > salary2) {
-                lowestSalary = salary2;
-            } else {
-                lowestSalary = salary1;
             }
         }
         std::cout << "hightest salary: " << hightestSalary << " RUB\n";
