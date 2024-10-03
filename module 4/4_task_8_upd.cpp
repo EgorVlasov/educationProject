@@ -12,7 +12,9 @@ int main (){
     std::cin >> salary2;
     std::cout << "input employee's salaty 2: ";
     std::cin >> salary3;
+
     std::cout << "=============processing=============\n";
+    
     if (salary1 > 0 && salary2 > 0 && salary3 > 0){
         int hightestSalary = std::max({salary1, salary2, salary3});
         int lowestSalary = std::min({salary1, salary2, salary3});
