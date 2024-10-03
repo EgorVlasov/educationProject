@@ -10,22 +10,24 @@ int main (){
     std::cin >> salary1;
     std::cout << "input employee's salaty 2: ";
     std::cin >> salary2;
-    std::cout << "input employee's salaty 2: ";
+    std::cout << "input employee's salaty 3: ";
     std::cin >> salary3;
     std::cout << "=============processing=============\n";
     if (salary1 > 0 && salary2 > 0 && salary3 > 0){
         hightestSalary = salary3;
         lowestSalary = salary1;
-        if (salary1 > salary2 && salary1 > salary3) {
+        if (salary1 > salary2) {
             hightestSalary = salary1;
             lowestSalary = salary2;
-            if (salary2 > salary3) {
+            if (salary1 < salary3){
+                hightestSalary = salary3;
+            }
+            if (salary2 > salary3){
                 lowestSalary = salary3;
             }
-        } else if (salary2 > salary1 && salary2 > salary3) {
-            hightestSalary = salary2;
-            if (salary1 > salary3) {
-                lowestSalary = salary3;
+        } else {
+            if (salary2 > salary3){
+                hightestSalary = salary2;
             }
         }
         std::cout << "hightest salary: " << hightestSalary << " RUB\n";
