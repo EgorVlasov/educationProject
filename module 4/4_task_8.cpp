@@ -21,8 +21,10 @@ int main (){
             minSalary = salary2;
             if (salary1 < salary3) maxSalary = salary3;
             if (salary2 > salary3) minSalary = salary3;
-        } else {
-            if (salary2 > salary3) maxSalary = salary2;
+        }
+        if (salary2 > salary3){
+            maxSalary = salary2;
+            if (salary1 > salary3) minSalary = salary3;
         }
         std::cout << "hightest salary: " << maxSalary << " RUB\n";
         std::cout << "lowest salary: " << minSalary << " RUB\n";
@@ -31,10 +33,4 @@ int main (){
     } else {
         std::cout << "Workers of the world UNITE! You should be paid money for your work!";
     }
-
-
-
-
-
-    
 }
