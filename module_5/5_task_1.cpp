@@ -5,6 +5,7 @@ using namespace std;
 
 int main() {
     setlocale(LC_ALL,".UTF8");
+    
     int altitude;
     cout << "введите высоту полета: ";
     cin >> altitude;
