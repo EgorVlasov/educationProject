@@ -33,7 +33,7 @@ int main (){
         }
     } else {
         mainMessage = "вы ввели неверный день недели";
-7
+        
     }
 
     cout << mainMessage;
