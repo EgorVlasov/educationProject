@@ -22,10 +22,10 @@ int main() {
     cin >> x >> y >> z;
 
     string message = "Errroor";
-  
-    if (a <= x && b <= y || a <= y && b <= x) message = "OK ab";
-    else if (b <= x && c <= y || b <= y && c <= x) message = "OK bc";
-    else if (a <= x && c <= y || a <= y && c <= x) message = "OK ac";
+
+    if (a <= x && b <= y && c <= z || a <= y && b <= x && c <= z) message = "OK AxBxC";
+    else if (a <= x && c <= y && b <= z || a <= y && c <= x && b <= z) message = "OK AxCxB";
+    else if (b <= x && c <= y && a <= z || b <= y && c <= x && a <= z) message = "OK BxCxA";
     
     cout << message;
 }
