@@ -23,7 +23,8 @@ int main (){
     int nowYear = currentDate -> tm_year + 1900;
 
     if (clientBirthYear > 1900 && clientBirthYear < nowYear){
-        if (clientBirthMonth > 1 && clientBirthMonth <= 12) {
+        if (clientBirthMonth >= 1 && clientBirthMonth <= 12) {
+
             int daysInMonth;
             
             if (clientBirthMonth == 1 || clientBirthMonth == 3 || clientBirthMonth == 5 || clientBirthMonth == 7 || clientBirthMonth == 8 || clientBirthMonth == 10 || clientBirthMonth == 12) {
@@ -36,7 +37,7 @@ int main (){
                 daysInMonth = 28;
             }
 
-            if (clientBirthDay >= 1 && clientBirthDay <= daysInMonth) {
+            if (clientBirthDay > 0 && clientBirthDay <= daysInMonth) {
 
                 if (nowYear - clientBirthYear > 18) {
                     std::cout << "Бармен, наливай!";
