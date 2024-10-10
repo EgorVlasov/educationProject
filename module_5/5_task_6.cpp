@@ -20,9 +20,9 @@ int main (){
     time_t t;
     time(&t);
     tm* currentDate = localtime(&t);
-    int nowYear = currentDate -> tm_year + 1900;
+    int currentYear = currentDate -> tm_year + 1900;
 
-    if (clientBirthYear > 1900 && clientBirthYear < nowYear){
+    if (clientBirthYear > 1900 && clientBirthYear < currentYear){
         if (clientBirthMonth >= 1 && clientBirthMonth <= 12) {
 
             int daysInMonth;
@@ -39,19 +39,21 @@ int main (){
 
             if (clientBirthDay > 0 && clientBirthDay <= daysInMonth) {
 
-                if (nowYear - clientBirthYear > 18) {
+                if (currentYear - clientBirthYear > 18) {
                     std::cout << "Бармен, наливай!";
-                } else if (nowYear - clientBirthYear == 18) {
-                    int nowMonth = currentDate -> tm_mon + 1;
-                    int nowDay = currentDate -> tm_mday;
+                } else if (currentYear - clientBirthYear == 18) {
 
-                    if (clientBirthMonth > nowMonth) { 
+                    int currentMonth = currentDate -> tm_mon + 1;
+
+                    if (clientBirthMonth > currentMonth) { 
                         std::cout << "Бармен, наливай!";
-                    } else if (clientBirthMonth == nowMonth) {
+                    } else if (clientBirthMonth == currentMonth) {
 
-                        if (clientBirthDay > nowDay) {
+                        int currentDay = currentDate -> tm_mday;
+
+                        if (clientBirthDay > currentDay) {
                             std::cout << "Бармен, наливай!";
-                        } else if (clientBirthDay == nowDay) {
+                        } else if (clientBirthDay == currentDay) {
                             std::cout << "Не сегодня, друг! Приходи завтра.";
                         } else {
                             std::cout << "Вы слишком молоды для выпивки!";
