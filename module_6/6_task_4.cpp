@@ -20,6 +20,7 @@ int main (){
     }
         
     if (digitCount % 2 == 0){
+        //можно и через цикл посчитать делитель, но так проще
         int divider = pow(10, (digitCount / 2));
 
         int digitLeftPart = x / divider;
@@ -40,7 +41,7 @@ int main (){
         }
 
         if (digitLeftPartSum == digitRightPartSum){
-            cout << "поздравляю! ваш билет - счастливый.";
+            cout << "поздравляю! вы добыли счастливый билет";
         } else {
             cout << "в это раз не повезло, билет не счтастливый";
         }
