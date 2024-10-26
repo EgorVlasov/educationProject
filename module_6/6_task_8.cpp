@@ -5,44 +5,44 @@ using namespace std;
 
 int main (){
     setlocale(LC_ALL,".UTF8");
-    int currentMaxX = 63;
-    int currentMinX = 0;
-    int currentX = currentMaxX / 2;
+    int maxX = 63;
+    int minX = 0;
+    int x = maxX / 2;
     int answer;
 
     cout << "ЗАГАДАЙТЕ ЧИСЛО ОТ 0 ДО 63\n"
-         << "данное число > " << currentX << " ? (1 = да, любая цифра = нет)\n";
+         << "данное число > " << x << " ? (1 = да, любая цифра = нет)\n";
     cin >> answer;
 
     if(answer == 1){
-        currentMinX = currentX;
+        minX = x;
     } else {
-        currentMaxX = currentX;
+        maxX = x;
     }
     bool check = true;
     while (check) {
         if(answer == 1){
-            currentMinX = currentX;
-                if ((currentMaxX - currentMinX)  > 1){
-                    currentX += (currentMaxX + 1 - currentMinX) / 2;
+            minX = x;
+                if ((maxX - minX)  > 1){
+                    x += (maxX + 1 - minX) / 2;
                 } else {
-                    currentX += (currentMaxX - currentMinX);
+                    x += (maxX - minX);
                 }
         } else {
-            currentMaxX = currentX;
-                if ((currentMaxX - currentMinX)  > 1){
-                    currentX -= (currentMaxX + 1 - currentMinX) / 2;
+            maxX = x;
+                if ((maxX - minX)  > 1){
+                    x -= (maxX + 1 - minX) / 2;
                 } else {
-                    currentX -= (currentMaxX - currentMinX);
+                    x -= (maxX - minX);
                 }
         }
-        check = currentX + 1 < currentMaxX && currentX > currentMinX;
-        cout << "данное число > " << currentX << " ? (1 - да, 0 - нет)\n";
+        check = x + 1 < maxX && x > minX;
+        cout << "данное число > " << x << " ? (1 - да, 0 - нет)\n";
         cin >> answer;
     }
     if (answer == 1){
-        currentX += 1;
+        x += 1;
     }
-    cout << "ваше число = " << currentX << "\n";
+    cout << "ваше число = " << x << "\n";
 
 }
