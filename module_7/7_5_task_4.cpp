@@ -1,4 +1,4 @@
-// Красный Марс
+// Рамка
 #include <iostream>
 #include <locale.h>
 
