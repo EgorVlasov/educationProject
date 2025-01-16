@@ -31,7 +31,7 @@ int main () {
     string matchChars = "";
     matchChars = word[0];
     while(match != true){ 
-        for(int wordCharPos = 0, matchCharsPos = 0 ; matchChars.length() + wordCharPos + 1 <= word.length(); wordCharPos++){
+        for(int wordCharPos = 0, matchCharsPos = 0 ; matchChars.length() + wordCharPos + 1 <= word.length(); ++wordCharPos, ++matchCharsPos){
             match = true;
             if(matchCharsPos + 1 > matchChars.length()){
                 matchCharsPos = 0;
@@ -40,7 +40,6 @@ int main () {
                 match = false;
                 break;
             }
-            ++matchCharsPos;
         }
         if((matchChars.length() > word.length() / 2) || (match && word.length() % matchChars.length() !=0
                 || matchChars.length() > 1 && wordLengthIsPrimeNum)){
@@ -54,7 +53,7 @@ int main () {
     if(match){
         cout << "YES, repeated chars: " << matchChars << "\n";
     } else{
-        cout << "NO \n" << matchChars << "\n";
+        cout << "NO \n";
     }
     return 0;
 }
