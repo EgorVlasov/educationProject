@@ -1,4 +1,4 @@
-//Подсчёт количества слов
+//Быки и коровы
 #include <iostream>
 #include <string>
 
