@@ -4,21 +4,82 @@
 
 using namespace std;
 
-int main () {
-    int number;
-    
-    cout << "Enter the number [1 - 3999]:\n";
-    bool inputValidation;
-    do{
-        inputValidation = true;
-        cin >> number;
-        if (cin.fail() || cin.peek() != '\n'){
-            cerr << "Input error. Try again\n";
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        } else if(number < 1 || number > 3999){
-            cerr << "Input error. Try again\n";
+bool input_validation_errors(){
+    if (cin.fail() || cin.peek() != '\n'){
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cerr << "Input error. Try again\n";
+        return true;
+    } else{
+        return false;
+    }
+}
+
+bool is_code_correct(int code){
+    if(!input_validation_errors() && code > 0 && code < 27){
+        return true;
+    } else{
+        return false;
+        cerr << "Input error. Try again\n";
+    }
+}
+
+bool is_char_letter(int charCode){
+    if(charCode >= 65 && charCode <= 122){
+        return true;
+    } else if(charCode >= 91 && charCode <= 96){
+        return false;
+    } else{
+        return false;
+    }
+}
+
+bool is_char_uppercase_letter(char charCode){
+    if(charCode >= 65 && charCode <= 90){
+        return true; 
+    } else{
+        return false;
+    }
+}
+
+string encrypt_caesar(string encryptedWord, int code){
+    string decodedWord = "";
+    for(int i = 0; i < encryptedWord.length(); i++){
+        if(is_char_letter(encryptedWord[i])){
+            if(is_char_letter((int)encryptedWord[i] + code)){
+                decodedWord[i] = (int)encryptedWord[i] + code;
+            } else{
+                int newCharPos;
+                if(is_char_uppercase_letter(encryptedWord[i])){
+                    newCharPos = 64 + (code - (90 - (int)encryptedWord[i]));
+                } else{
+                    newCharPos = 96 + (code - (122 - (int)encryptedWord[i]));
+                }
+                decodedWord[i] = newCharPos;
+            }
+            
         } else{
-            inputValidation = false;
+            decodedWord[i] = encryptedWord[i];
         }
-    } while(inputValidation);
+    }
+    return decodedWord;
+}
+
+int main () {
+    string encryptedWord;
+    cout << "Enter the encrypted word:\n";
+    do{
+        cin >> encryptedWord;
+    } while(input_validation_errors());
+
+    int code;
+    cout << "Enter the code:\n";
+    do{
+        cin >> code;
+    } while(!is_code_correct(code));
+
+    cout << "Encrypted word: " << encryptedWord << "\n";
+    cout << "Decoded word: " << encrypt_caesar(encryptedWord, code);
+
+
+}
