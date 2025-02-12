@@ -34,30 +34,35 @@ bool is_char_letter(int charCode){
     }
 }
 
-bool is_char_uppercase_letter(char charCode){
+int find_out_letter_case(char charCode){
     if(charCode >= 65 && charCode <= 90){
-        return true; 
+        return 1; 
+    } else if(charCode >= 97 && charCode <= 122){
+        return 0; 
     } else{
-        return false;
+        return -1;
     }
 }
 
 string encrypt_caesar(string encryptedWord, int code){
-    string decodedWord = "";
+    string decodedWord = encryptedWord;
     for(int i = 0; i < encryptedWord.length(); i++){
         if(is_char_letter(encryptedWord[i])){
-            if(is_char_letter((int)encryptedWord[i] + code)){
-                decodedWord[i] = (int)encryptedWord[i] + code;
-            } else{
-                int newCharPos;
-                if(is_char_uppercase_letter(encryptedWord[i])){
+            int newCharPos;
+            if(is_char_uppercase_letter(encryptedWord[i])){
+                if(is_char_uppercase_letter((int)encryptedWord[i] + code)){
+                    decodedWord[i] = (int)encryptedWord[i] + code;
+                } else{
                     newCharPos = 64 + (code - (90 - (int)encryptedWord[i]));
+                }
+            } else{
+                if(is_char_uppercase_letter((int)encryptedWord[i] + code)){
+                    decodedWord[i] = (int)encryptedWord[i] + code;
                 } else{
                     newCharPos = 96 + (code - (122 - (int)encryptedWord[i]));
                 }
-                decodedWord[i] = newCharPos;
             }
-            
+            decodedWord[i] = newCharPos;
         } else{
             decodedWord[i] = encryptedWord[i];
         }
@@ -79,7 +84,7 @@ int main () {
     } while(!is_code_correct(code));
 
     cout << "Encrypted word: " << encryptedWord << "\n";
-    cout << "Decoded word: " << encrypt_caesar(encryptedWord, code);
+    cout << "Decoded word: " << encrypt_caesar(encryptedWord, code) << "\n";
 
 
 }
