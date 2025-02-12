@@ -24,45 +24,36 @@ bool is_code_correct(int code){
     }
 }
 
-bool is_char_letter(int charCode){
-    if(charCode >= 65 && charCode <= 122){
-        return true;
-    } else if(charCode >= 91 && charCode <= 96){
-        return false;
-    } else{
-        return false;
-    }
-}
-
 int find_out_letter_case(char charCode){
     if(charCode >= 65 && charCode <= 90){
+        // uppercase
         return 1; 
     } else if(charCode >= 97 && charCode <= 122){
+        // lowercase
         return 0; 
     } else{
+        // not a letter
         return -1;
     }
 }
 
 string encrypt_caesar(string encryptedWord, int code){
     string decodedWord = encryptedWord;
-    for(int i = 0; i < encryptedWord.length(); i++){
-        if(is_char_letter(encryptedWord[i])){
-            int newCharPos;
-            if(is_char_uppercase_letter(encryptedWord[i])){
-                if(is_char_uppercase_letter((int)encryptedWord[i] + code)){
-                    decodedWord[i] = (int)encryptedWord[i] + code;
-                } else{
-                    newCharPos = 64 + (code - (90 - (int)encryptedWord[i]));
-                }
-            } else{
-                if(is_char_uppercase_letter((int)encryptedWord[i] + code)){
-                    decodedWord[i] = (int)encryptedWord[i] + code;
-                } else{
-                    newCharPos = 96 + (code - (122 - (int)encryptedWord[i]));
-                }
+    for(int i = 0, newCharPos = 0; i < encryptedWord.length(); i++){
+        if(find_out_letter_case(encryptedWord[i]) == 1){
+            if(find_out_letter_case((int)encryptedWord[i] + code) == 1){
+                decodedWord[i] = (int)encryptedWord[i] + code;
+            }  else{
+                newCharPos = 64 + (code - (90 - (int)encryptedWord[i]));
+                decodedWord[i] = newCharPos;
             }
-            decodedWord[i] = newCharPos;
+        } else if(find_out_letter_case(encryptedWord[i]) == 0){
+            if(find_out_letter_case((int)encryptedWord[i] + code) == 0){
+                decodedWord[i] = (int)encryptedWord[i] + code;
+            }  else{
+                newCharPos = 64 + (code - (90 - (int)encryptedWord[i]));
+                decodedWord[i] = newCharPos;
+            }
         } else{
             decodedWord[i] = encryptedWord[i];
         }
