@@ -22,21 +22,6 @@ bool input_validation_errors(){
         return false;
     }
 }
-
-bool is_char_letter(int charNum){
-    if((charNum >= 'A' && charNum <= 'Z') || (charNum >= 'a' && charNum <= 'z')){
-        return true;
-    } else{
-        return false;
-    }
-}
-bool is_char_number(int charNum){
-    if((charNum >= '0' && charNum <= '9')){
-        return true;
-    } else{
-        return false;
-    }
-}
 bool is_char_allowed_symbol_for_lpart(char emailChar){
     string allowedSymbols = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!#$%&'*+-/=?^_`{|}~.";
     if(allowedSymbols.find(emailChar) == string::npos){
