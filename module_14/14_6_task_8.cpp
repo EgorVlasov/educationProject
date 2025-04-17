@@ -40,8 +40,8 @@ void add_field_creation(bool field_1_2[][10], bool field_2_2[][10]){
     }
 }
 
-void ship_coordinates_request(unsigned int coordinates[][2], int &shipDeckCount){
-    cout << "Enter coordinates for " << shipDeckCount << "-decked Ship." << endl;
+void ship_coordinates_request(unsigned int coordinates[][2], int &shipType){
+    cout << "Enter coordinates for " << shipType << "-decked Ship." << endl;
     for(int i = 0; i < 2; i++){
         if(i == 0){
             cout << "Enter coordinates (y,x) of the beginning of the ship" << endl;
