@@ -80,30 +80,32 @@ int win_checking(char field[][4], string playerName1, string playerName2){
                 cout << "Congratulation! " << playerName2 << " win!" << endl;
             }
         }
-        if(field[i][i + 1] == 'x'){
+        if(field[i][i] == 'x'){
             dRxCounter++;
             if(dRxCounter == 3){
                 winner = 1;
                 cout << "Congratulation! " << playerName1 << " win!" << endl;
             }
-        } else if(field[i][i + 1] == 'o'){
+        } else if(field[i][i] == 'o'){
             dRoCounter++;
             if(dRoCounter == 3){
                 winner = 2;
                 cout << "Congratulation! " << playerName2 << " win!" << endl;
             }
         }
-        if(field[i][3 - i] == 'x'){
-            dLxCounter++;
-            if(dLxCounter == 3){
-                winner = 1;
-                cout << "Congratulation! " << playerName1 << " win!" << endl;
-            }
-        } else if(field[i][3 - i] == 'o'){
-            dLoCounter++;
-            if(dLoCounter == 3){
-                winner = 2;
-                cout << "Congratulation! " << playerName2 << " win!" << endl;
+        if(4 - i < 4){
+            if(field[i][4 - i] == 'x'){
+                dLxCounter++;
+                if(dLxCounter == 3){
+                    winner = 1;
+                    cout << "Congratulation! " << playerName1 << " win!" << endl;
+                }
+            } else if(field[i][4 - i] == 'o'){
+                dLoCounter++;
+                if(dLoCounter == 3){
+                    winner = 2;
+                    cout << "Congratulation! " << playerName2 << " win!" << endl;
+                }
             }
         }
         for(int j = 0; j < 4; j++){
