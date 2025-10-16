@@ -4,12 +4,14 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
+//#include <filesystem>
+
 
 using namespace std;
 
 const int sectorsCnt = 13;
 const int totalScoreToWin = 6;
-const string path= "/Users/evlasov/Documents/educationProject/module_19/";
+const string path= "./add_files/";
 
 bool input_validation_errors(){
     if (cin.fail() || cin.peek() != '\n'){
@@ -23,16 +25,19 @@ bool input_validation_errors(){
 }
 int get_random_int(int max){
      srand(time(NULL));
-     return 0 + rand() % (max - 1);
+     return rand() % (max);
 }
 void parse_file_to_vec(vector <string> &vec, const string &name){
     ifstream file;
+    //std::filesystem::path currentDir = std::filesystem::current_path();
+    //cout << currentDir;
     file.open(path + name);
     if(file){
         string line;
         while(getline(file, line)){
             vec.push_back(line);
         }
+        file.close();
     }else{
         cerr << "Error. Can't open the file" << endl;
     }
