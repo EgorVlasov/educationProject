@@ -4,87 +4,107 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
-//#include <filesystem>
-
+#include <filesystem>
 
 using namespace std;
 
 const int sectorsCnt = 13;
 const int totalScoreToWin = 6;
-const string path= "./add_files/";
+const string path = "/Users/evlasov/Documents/educationProject/build/bin/add_files";
 
-bool input_validation_errors(){
-    if (cin.fail() || cin.peek() != '\n'){
+bool input_validation_errors()
+{
+    if (cin.fail() || cin.peek() != '\n')
+    {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cerr << "Input error. Try again" << endl;
         return true;
-    } else{
+    }
+    else
+    {
         return false;
     }
 }
-int get_random_int(int max){
-     srand(time(NULL));
-     return rand() % (max);
+int get_random_int(int max)
+{
+    srand(time(NULL));
+    return rand() % (max);
 }
-void parse_file_to_vec(vector <string> &vec, const string &name){
+void parse_file_to_vec(vector<string> &vec, const string &fileName)
+{
     ifstream file;
-    //std::filesystem::path currentDir = std::filesystem::current_path();
-    //cout << currentDir;
-    file.open(path + name);
-    if(file){
+    cout << "we are here now: " << std::filesystem::current_path() << endl;
+    file.open(path + fileName);
+    if (file)
+    {
         string line;
-        while(getline(file, line)){
+        while (getline(file, line))
+        {
             vec.push_back(line);
         }
         file.close();
-    }else{
-        cerr << "Error. Can't open the file" << endl;
+    }
+    else
+    {
+        cerr << "Error. Can't open the file " << path + fileName << endl;
     }
 }
-bool check_answer(const string &answer,  vector <string> &answers, const int &sectorNum){
-    if(answer == answers[sectorNum]){
+bool check_answer(const string &answer, vector<string> &answers, const int &sectorNum)
+{
+    if (answer == answers[sectorNum])
+    {
         return true;
-    } else{
+    }
+    else
+    {
         return false;
     }
 }
 
-int main(){
+int main()
+{
     const string answersListFileName = "answers.txt";
     const string questionsListFileName = "questions.txt";
-    vector <string> questions;
+    vector<string> questions;
     parse_file_to_vec(questions, questionsListFileName);
-    int freeSectors = questions.size();
-    if(freeSectors < sectorsCnt){
+    long long freeSectors = questions.size();
+    if (freeSectors < sectorsCnt)
+    {
         cerr << "Error. Insufficient number of questions in the file" << endl;
         return 0;
     }
-    vector <string> answers;
+    vector<string> answers;
     parse_file_to_vec(answers, answersListFileName);
-    if(answers.size() != freeSectors){
+    if (answers.size() != freeSectors)
+    {
         cerr << "Error. Insufficient number of answers in the file" << endl;
-        return 0;       
+        return 0;
     }
 
     cout << "Let's start!" << endl;
-    int score[2] = {0,0};
-    while(score[0] < totalScoreToWin && score[1] < totalScoreToWin){
+    int score[2] = {0, 0};
+    while (score[0] < totalScoreToWin && score[1] < totalScoreToWin)
+    {
         string answer;
-        int sectorNum =  get_random_int(questions.size());
+        int sectorNum = get_random_int(questions.size());
         cout << "On the wheel, sector " << sectorNum << ", a question from the viewer:" << endl;
         cout << questions[sectorNum] << endl;
-        do{
+        do
+        {
             cout << "Your answer: " << endl;
             getline(cin, answer);
-        }while(input_validation_errors());
-        if(check_answer(answer, answers, sectorNum)){
+        } while (input_validation_errors());
+        if (check_answer(answer, answers, sectorNum))
+        {
             score[0]++;
             cout << "Correct! +1 point to your team" << endl;
-        }else{
+        }
+        else
+        {
             score[1]++;
             cout << "Wrong answer! +1 point goes to viewers team" << endl;
-            cout << "Correct answer: " << answers[sectorNum] << endl; 
+            cout << "Correct answer: " << answers[sectorNum] << endl;
         }
         cout << "Experts: " << score[0] << " | Viewers: " << score[1] << endl;
         answers.erase(answers.begin() + sectorNum);
@@ -92,9 +112,12 @@ int main(){
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
-    if(score[0] > score[1]){
+    if (score[0] > score[1])
+    {
         cout << "Congratulations! Experts win!" << endl;
-    }else{
+    }
+    else
+    {
         cout << "You loose! Viewers win!" << endl;
         return 1;
     }

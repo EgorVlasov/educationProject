@@ -5,3 +5,6 @@
 *.yml
 *.exec
 .DS_Store
+CMakeLists.txt
+build
+*.out
