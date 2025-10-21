@@ -5,7 +5,7 @@
 
 using namespace std;
 
-const string path = "/Users/evlasov/Documents/educationProject/build/bin/add_files/";
+const string path = "/Users/evlasov/Documents/educationProject/module_20/block_5/add_files/";
 const string fileName = "pic.txt";
 
 bool input_validation_errors()
