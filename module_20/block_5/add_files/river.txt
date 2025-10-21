@@ -1,6 +1,7 @@
 sunfish
 shad
 carp
+pike
 bass
 bullhead
 carp
@@ -16,3 +17,4 @@ carp
 walleye
 catfish
 carp
+pike
