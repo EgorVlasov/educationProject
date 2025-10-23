@@ -119,7 +119,7 @@ void show_atm_status(int atmCashInventoryСache[][2], const int &totalBalanceCac
 
 int get_value()
 {
-    int value = 0;
+    unsigned int value = 0;
     do
     {
         cout << "Please input the value:" << endl;
@@ -138,7 +138,7 @@ bool is_amount_composable(int amount)
     return true;
 }
 
-void withdraw(int amount, int atmCashInventoryСache[][2], int banknotes[][2])
+void withdraw(unsigned int amount, int atmCashInventoryСache[][2], int banknotes[][2])
 {
     for (int i = 0; i < 6 && amount > 0; i++)
     {
@@ -154,7 +154,7 @@ void withdraw(int amount, int atmCashInventoryСache[][2], int banknotes[][2])
 
 void cash_out(int atmCashInventoryСache[][2], int &totalBalanceCache, bool &isFatalError)
 {
-    int cashOutAmount = 0;
+    unsigned int cashOutAmount = 0;
     int banknotes[6][2] = {0};
     do
     {
@@ -179,7 +179,7 @@ void cash_out(int atmCashInventoryСache[][2], int &totalBalanceCache, bool &isF
 
 void cash_in(int atmCashInventoryСache[][2], int &totalBalanceCache, bool &isFatalError)
 {
-    int cashInAmount = 0;
+    unsigned int cashInAmount = 0;
     for (int i = 0; i < 6; i++)
     {
         if (atmCashInventoryСache[i][1] == 0)
