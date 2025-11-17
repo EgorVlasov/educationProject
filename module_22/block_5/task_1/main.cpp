@@ -49,7 +49,7 @@ bool is_input_name_correct(string &inputName)
     {
         if (((inputName[j] < 65 || inputName[j] > 90) && (inputName[j] < 97 || inputName[j] > 122)) && inputName[j] != 45)
         {
-            cerr << "Error. Invalid name. String shoud comtain only latters (A-Z, a-z) or symbol '—'" << endl;
+            cerr << "Error. Invalid name. String shoud contain only latters (A-Z, a-z) or symbol '—'" << endl;
             return false;
         }
     }
