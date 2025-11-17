@@ -88,7 +88,7 @@ int main()
     MathVector vec_2;
     MathVector vec_3;
     int mathScalar = 0;
-    unsigned userCommands = 0;
+    unsigned userCommand = 0;
     while (true)
     {
         cout << "Input command:" << endl
@@ -97,15 +97,15 @@ int main()
              << "3 - subtract vector" << endl
              << "4 - vector length" << endl
              << "5 - normalize vector" << endl
-             << "6 - exit" << endl;
+             << "0 - exit" << endl;
         do
         {
-            cin >> userCommands;
-        } while (has_input_error() || userCommands > 7);
+            cin >> userCommand;
+        } while (has_input_error() || userCommand > 5);
 
-        switch (userCommands)
+        switch (userCommand)
         {
-        case 1:
+        case 1: // add vector
         {
             cout << "Vector 1 " << endl;
             vec_1.input();
@@ -117,7 +117,7 @@ int main()
             vec_3.print();
             break;
         }
-        case 2:
+        case 2: // scale vector
         {
             cout << "Vector 1 " << endl;
             vec_1.input();
@@ -132,7 +132,7 @@ int main()
             vec_3.print();
             break;
         }
-        case 3:
+        case 3: // subtract vector
         {
             cout << "Vector 1 " << endl;
             vec_1.input();
@@ -144,14 +144,14 @@ int main()
             vec_3.print();
             break;
         }
-        case 4:
+        case 4: // vector length
         {
             cout << "Vector 1 " << endl;
             vec_1.input();
             cout << "Vector 1 length: " << vec_1.length();
             break;
         }
-        case 5:
+        case 5: // normalize vector
         {
             cout << "Vector 1 " << endl;
             vec_1.input();
@@ -170,7 +170,7 @@ int main()
             }
             break;
         }
-        case 6:
+        case 0: // exit
             return 0;
 
         default:
