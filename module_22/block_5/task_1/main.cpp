@@ -45,12 +45,33 @@ bool is_input_name_correct(string &inputName)
         cerr << "Error. Incorrect name" << endl;
         return false;
     }
+    if (inputName.front() == '-' || inputName.back() == '-')
+    {
+        cerr << "Error. Hyphen cannot be first or last symbol" << endl;
+        return false;
+    }
+    int nameLength = inputName.length();
     for (size_t j = 0; j < inputName.length(); j++)
     {
-        if (((inputName[j] < 65 || inputName[j] > 90) && (inputName[j] < 97 || inputName[j] > 122)) && inputName[j] != 45)
+        if (!isalpha(inputName[j]) && inputName[j] != '-')
         {
             cerr << "Error. Invalid name. String shoud contain only latters (A-Z, a-z) or symbol '—'" << endl;
             return false;
+        }
+        if ((j == 0 || j == nameLength - 1) && inputName[j] == '-')
+        {
+            cerr << "Error. Hyphen cannot be first or last symbol" << endl;
+            return false;
+        }
+        if (inputName[j] == '-' && inputName[j + 1] == '-')
+        {
+            cerr << "Error. Double hyphen not allowed" << endl;
+            return false;
+        }
+
+        if (j == 0 && islower(inputName[j]))
+        {
+            inputName[j] = toupper(inputName[j]);
         }
     }
     return true;
