@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <limits>
 
 using namespace std;
 
@@ -25,7 +26,7 @@ bool is_input_name_correct(string &inputName)
 {
     if (inputName.length() > 15)
     {
-        cerr << "Error. To many symbols" << endl;
+        cerr << "Error. Too many symbols" << endl;
         return false;
     }
     if (inputName.length() < 2)
@@ -43,7 +44,7 @@ bool is_input_name_correct(string &inputName)
     {
         if (!isalpha(inputName[j]) && inputName[j] != '-')
         {
-            cerr << "Error. Invalid name. String shoud contain only latters (A-Z, a-z) or symbol '—'" << endl;
+            cerr << "Error. Invalid name. String should contain only letters (A-Z, a-z) or symbol '—'" << endl;
             return false;
         }
         if ((j == 0 || j == nameLength - 1) && inputName[j] == '-')
