@@ -33,7 +33,7 @@ bool has_input_error()
     }
 }
 
-void addToCashe(Tasks &task)
+void addToCache(Tasks &task)
 {
     int newKey = 1;
     if (!allTasks.empty())
@@ -48,7 +48,7 @@ void end(Tasks &currentTask)
     if (currentTask.startTime.has_value())
     {
         currentTask.endTime = steady_clock::now();
-        addToCashe(currentTask);
+        addToCache(currentTask);
         cout << "task " << currentTask.name << " finished" << endl;
     }
     else
@@ -108,11 +108,7 @@ void status(Tasks &currentTask)
 {
     showCurrentTask(currentTask);
 
-    if (allTasks.empty())
-    {
-        cout << "No ended tasks" << endl;
-    }
-    else
+    if (!allTasks.empty())
     {
         for (const auto &pair : allTasks)
         {
@@ -123,6 +119,10 @@ void status(Tasks &currentTask)
             showDurationInHMS(duration);
             cout << endl;
         }
+    }
+    else
+    {
+        cout << "No ended tasks" << endl;
     }
 }
 
