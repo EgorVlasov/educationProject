@@ -84,6 +84,11 @@ bool is_input_date_correct(Birthdays &date)
 
 void showBirthdayListforToday()
 {
+    if (friendsList.empty())
+    {
+        cout << "Your berthday list is empty" << endl;
+        return;
+    }
     time_t now = time(nullptr);
     tm today = *localtime(&now);
     int y = today.tm_year + 1900;
@@ -100,7 +105,10 @@ void showBirthdayListforToday()
     for (auto it = range.first; it != range.second; ++it)
     {
         cout << it->second.friendName << " "
-             << it->second.day << "." << it->second.month << "." << it->second.year << "(" << y - it->second.year << ")" << endl;
+             << it->second.day << "."
+             << it->second.month << "."
+             << it->second.year
+             << "(" << y - it->second.year << ")" << endl;
         cout << endl;
     }
     if (range.first == range.second)
@@ -109,9 +117,16 @@ void showBirthdayListforToday()
         if (range.second != friendsList.end())
         {
             cout << "Next nearest birthday:" << endl;
-            cout << range.second->second.friendName << endl;
-            cout << range.second->second.day << "." << range.second->second.month << "." << range.second->second.year << "(" << y - range.second->second.year << ")" << endl;
+            cout << range.second->second.friendName << " "
+                 << range.second->second.day << "."
+                 << range.second->second.month << "."
+                 << range.second->second.year
+                 << "(" << y - range.second->second.year << ")" << endl;
             cout << endl;
+        }
+        else
+        {
+            cout << "No nearest birthdays" << endl;
         }
     }
 }
