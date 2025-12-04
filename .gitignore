@@ -1,10 +1,7 @@
-.vscode/launch.json
-.vscode/settings.json
-.vscode/tasks.json
+.vscode
 *.dSYM
 *.yml
 *.exec
 .DS_Store
-CMakeLists.txt
 build
 *.out
